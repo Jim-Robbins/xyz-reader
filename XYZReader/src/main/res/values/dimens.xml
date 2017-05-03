@@ -1,4 +1,8 @@
 <resources>
+    <!-- toolbar -->
+    <dimen name="toolbar_container_height">104dp</dimen>
+    <dimen name="toolbar_container_elevation">8dp</dimen>
+
     <!-- detail -->
     <dimen name="detail_title_text_size">32sp</dimen>
     <dimen name="detail_body_text_size">22sp</dimen>
@@ -7,5 +11,13 @@
     <dimen name="fab_elevation">2dp</dimen>
     <dimen name="fab_press_translation_z">6dp</dimen>
     <dimen name="fab_margin">24dp</dimen>
+    <dimen name="list_top_margin">120dp</dimen>
+    <dimen name="list_bottom_margin">28dp</dimen>
+
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="card_image_height">400dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="list_item_two_line_text_height">68dp</dimen>
 
 </resources>
