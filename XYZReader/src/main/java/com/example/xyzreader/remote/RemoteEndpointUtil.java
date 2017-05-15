@@ -4,6 +4,7 @@ import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.IOException;
@@ -30,8 +31,9 @@ public class RemoteEndpointUtil {
 
         // Parse JSON
         try {
-            JSONTokener tokener = new JSONTokener(itemsJson);
-            Object val = tokener.nextValue();
+            JSONObject jsonObject = new JSONObject(itemsJson);
+            Log.d(TAG, jsonObject.toString());
+            Object val = jsonObject.getJSONArray("articles");
             if (!(val instanceof JSONArray)) {
                 throw new JSONException("Expected JSONArray");
             }

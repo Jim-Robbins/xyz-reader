@@ -163,24 +163,23 @@ public class ArticleListActivity extends AppCompatActivity implements
         public void onBindViewHolder(ViewHolder holder, int position) {
             mCursor.moveToPosition(position);
             holder.titleView.setText(mCursor.getString(ArticleLoader.Query.TITLE));
-            holder.titleView.setSelected(true);
-            holder.titleView.setSingleLine(true);
-            Date publishedDate = parsePublishedDate();
-            if (!publishedDate.before(START_OF_EPOCH.getTime())) {
-
-                holder.subtitleView.setText(Html.fromHtml(
-                        DateUtils.getRelativeTimeSpanString(
-                                publishedDate.getTime(),
-                                System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
-                                DateUtils.FORMAT_ABBREV_ALL).toString()
-                                + " " + " by "
-                                + mCursor.getString(ArticleLoader.Query.AUTHOR)));
-            } else {
-                holder.subtitleView.setText(Html.fromHtml(
-                        outputFormat.format(publishedDate)
-                        + " " + " by "
-                        + mCursor.getString(ArticleLoader.Query.AUTHOR)));
-            }
+//            Date publishedDate = parsePublishedDate();
+//            if (!publishedDate.before(START_OF_EPOCH.getTime())) {
+//
+//                holder.subtitleView.setText(
+//                        DateUtils.getRelativeTimeSpanString(
+//                                publishedDate.getTime(),
+//                                System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
+//                                DateUtils.FORMAT_ABBREV_ALL).toString()
+//                                + "\n" + " by "
+//                                + mCursor.getString(ArticleLoader.Query.AUTHOR));
+//            } else {
+//                holder.subtitleView.setText(
+//                        outputFormat.format(publishedDate)
+//                        + "\n" + " by "
+//                        + mCursor.getString(ArticleLoader.Query.AUTHOR));
+//            }
+            holder.subtitleView.setText(mCursor.getString(ArticleLoader.Query.BODY));
             holder.thumbnailView.setImageUrl(
                     mCursor.getString(ArticleLoader.Query.THUMB_URL),
                     ImageLoaderHelper.getInstance(ArticleListActivity.this).getImageLoader());

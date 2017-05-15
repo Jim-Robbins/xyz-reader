@@ -12,7 +12,8 @@ public class Config {
     static {
         URL url = null;
         try {
-            url = new URL("https://go.udacity.com/xyz-reader-json" );
+            String apiKey = "9e0654f284bf4f42bbbdb5d6adec1dd3";
+            url = new URL(" https://newsapi.org/v1/articles?source=espn&apiKey="+apiKey );
         } catch (MalformedURLException ignored) {
             // TODO: throw a real error
             Log.e(TAG, "Please check your internet connection.");

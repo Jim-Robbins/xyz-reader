@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        >
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
@@ -23,11 +23,10 @@
             app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
 
-            <ImageView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/logo"
-                android:contentDescription="@string/app_name" />
+                android:text="@string/app_name" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -50,10 +49,7 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:scrollbarStyle="outsideOverlay"
-            android:paddingTop="@dimen/list_top_margin"
-            android:paddingStart="@dimen/list_side_margin"
-            android:paddingEnd="@dimen/list_side_margin"
-            android:paddingBottom="@dimen/list_bottom_margin" />
+            android:paddingTop="@dimen/list_top_margin" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
 
