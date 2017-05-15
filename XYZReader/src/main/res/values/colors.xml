@@ -29,4 +29,5 @@
     <color name="toolbar_text">#ffffff</color>
     <color name="body_text">#000000</color>
     <color name="window_background">#ededed</color>
+    <color name="divider">#898989</color>
 </resources>
