@@ -13,7 +13,7 @@ public class Config {
         URL url = null;
         try {
             String apiKey = "9e0654f284bf4f42bbbdb5d6adec1dd3";
-            url = new URL(" https://newsapi.org/v1/articles?source=espn&apiKey="+apiKey );
+            url = new URL("https://newsapi.org/v1/articles?source=the-new-york-times&apiKey="+apiKey );
         } catch (MalformedURLException ignored) {
             // TODO: throw a real error
             Log.e(TAG, "Please check your internet connection.");
