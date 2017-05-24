@@ -6,7 +6,10 @@
     android:fitsSystemWindows="true"
     app:contentScrim="?attr/colorPrimary">
 
-    <include layout="@layout/include_app_toolbar"/>
+    <include
+        layout="@layout/include_app_toolbar"
+        android:elevation="@dimen/toolbar_elevation"
+        />
 
     <include
         layout="@layout/include_item_list"

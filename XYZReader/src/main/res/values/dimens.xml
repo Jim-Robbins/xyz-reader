@@ -1,42 +1,20 @@
 <resources>
     <!-- toolbar -->
-    <dimen name="toolbar_container_height">104dp</dimen>
-    <dimen name="toolbar_container_elevation">8dp</dimen>
+    <dimen name="toolbar_height">150dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
 
-    <!-- detail -->
-    <dimen name="detail_title_text_size">32sp</dimen>
-    <dimen name="detail_body_text_size">22sp</dimen>
-    <item name="detail_body_line_spacing_multiplier" format="float" type="fraction">1.25</item>
-
-    <dimen name="fab_elevation">2dp</dimen>
+    <!-- fab -->
+    <dimen name="fab_elevation">4dp</dimen>
     <dimen name="fab_press_translation_z">6dp</dimen>
     <dimen name="fab_margin">24dp</dimen>
-    <dimen name="list_top_margin">120dp</dimen>
-    <dimen name="list_bottom_margin">28dp</dimen>
+    <dimen name="fab_size">56dp</dimen>
+
+    <dimen name="list_top_margin">@dimen/toolbar_height</dimen>
+
+    <dimen name="detail_linear_layout_elevation">2dp</dimen>
 
     <dimen name="margin_normal">16dp</dimen>
     <dimen name="margin_small">4dp</dimen>
-    <dimen name="card_image_height">400dp</dimen>
     <dimen name="margin_medium">8dp</dimen>
-    <dimen name="list_item_two_line_text_height">68dp</dimen>
-
-
-
-    <!-- Activity -->
-    <dimen name="max_width">400dp</dimen>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="material_component_cards_left_and_right_padding">16dp</dimen>
-    <dimen name="material_component_cards_top_and_bottom_padding">16dp</dimen>
-    <dimen name="material_component_cards_padding_from_edge_of_screen_to_card">4dp</dimen>
-    <dimen name="material_component_cards_space_between_cards">4dp</dimen>
-    <dimen name="app_bar_elevation">4dp</dimen>
-    <dimen name="floating_action_button_elevation">4dp</dimen>
-    <integer name="grid_column_count">2</integer>
-
-    <!-- Details -->
-    <dimen name="material_layout_app_bar_height">320dp</dimen>
-    <dimen name="expanded_toolbar_height">80dp</dimen>
-    <dimen name="expanded_toolbar_title_margin_bottom">40dp</dimen>
-    <dimen name="material_layout_vertical_spacing_between_content_areas">8dp</dimen>
 
 </resources>

@@ -31,9 +31,16 @@ public class RemoteEndpointUtil {
 
         // Parse JSON
         try {
-            JSONObject jsonObject = new JSONObject(itemsJson);
-            Log.d(TAG, jsonObject.toString());
-            Object val = jsonObject.getJSONArray("articles");
+            Object val;
+            if(Config.REAL_RSS) {
+                JSONObject jsonObject = new JSONObject(itemsJson);
+                Log.d(TAG, jsonObject.toString());
+                val = jsonObject.getJSONArray("articles");
+            } else {
+                JSONTokener tokener = new JSONTokener(itemsJson);
+                val = tokener.nextValue();
+            }
+
             if (!(val instanceof JSONArray)) {
                 throw new JSONException("Expected JSONArray");
             }
