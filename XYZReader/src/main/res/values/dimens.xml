@@ -1,6 +1,6 @@
 <resources>
     <!-- toolbar -->
-    <dimen name="toolbar_height">150dp</dimen>
+    <dimen name="toolbar_height">75dp</dimen>
     <dimen name="toolbar_elevation">4dp</dimen>
 
     <!-- fab -->
