@@ -8,8 +8,8 @@
     <!--suppress AndroidLintContentDescription -->
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/thumbnail"
-        android:layout_width="@dimen/list_item_image_size"
-        android:layout_height="@dimen/list_item_image_size"
+        android:layout_width="@dimen/list_item_image_width"
+        android:layout_height="@dimen/list_item_image_height"
         android:layout_marginLeft="@dimen/margin_normal"
         android:background="@color/photo_placeholder"
         android:layout_centerInParent="true"
