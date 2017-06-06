@@ -6,7 +6,8 @@
     <dimen name="list_toolbar_side_margin">0dp</dimen>
     <dimen name="list_item_two_line_text_height">68dp</dimen>
     <dimen name="list_item_three_line_text_height">72dp</dimen>
-    <dimen name="list_item_image_size">40dp</dimen>
+    <dimen name="list_item_image_width">40dp</dimen>
+    <dimen name="list_item_image_height">55dp</dimen>
     <dimen name="list_item_content_left_margin">72dp</dimen>
     <integer name="list_column_count">1</integer>
 
