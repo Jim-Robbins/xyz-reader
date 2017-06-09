@@ -20,7 +20,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
@@ -34,8 +33,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import static com.example.xyzreader.R.id.toolbar;
-
 /**
  * An activity representing a list of Articles. This activity has different presentations for
  * handset and tablet-size devices. On handsets, the activity presents a list of items, which when
@@ -46,14 +43,10 @@ public class ArticleListActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor>, AppBarLayout.OnOffsetChangedListener {
 
     private static final String TAG = ArticleListActivity.class.toString();
-    private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR  = 0.9f;
-    private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS     = 0.3f;
+    private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR  = 0.8f;
     private static final int ALPHA_ANIMATIONS_DURATION              = 200;
     private boolean mIsTheTitleVisible          = false;
-    private boolean mIsTheTitleContainerVisible = true;
 
-    private LinearLayout mTitleContainer;
-    private TextView mTitle;
     private AppBarLayout mAppBarLayout;
     private Toolbar mToolbar;
 
@@ -66,6 +59,7 @@ public class ArticleListActivity extends AppCompatActivity implements
     // Most time functions can only handle 1902 - 2037
     private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2,1,1);
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +71,7 @@ public class ArticleListActivity extends AppCompatActivity implements
         bindActivity();
         initToolbar();
 
-        startAlphaAnimation(mTitle, 0, View.INVISIBLE);
+        startAlphaAnimation(mToolbar, 0, View.INVISIBLE);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         getLoaderManager().initLoader(0, null, this);
 
@@ -88,16 +82,13 @@ public class ArticleListActivity extends AppCompatActivity implements
 
     private void bindActivity() {
         mToolbar        = (Toolbar) findViewById(R.id.toolbar);
-        mTitle          = (TextView) findViewById(R.id.textViewTitle);
-        mTitleContainer = (LinearLayout) findViewById(R.id.linearlayoutTitle);
         mAppBarLayout   = (AppBarLayout) findViewById(R.id.appbar);
         mAppBarLayout.addOnOffsetChangedListener(this);
     }
 
     private void initToolbar() {
         setSupportActionBar(mToolbar);
-        //getSupportActionBar().setDisplayShowHomeEnabled(true);
-        //getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     private void refresh() {
@@ -250,7 +241,7 @@ public class ArticleListActivity extends AppCompatActivity implements
         int maxScroll = appBarLayout.getTotalScrollRange();
         float percentage = (float) Math.abs(offset) / (float) maxScroll;
 
-        handleAlphaOnTitle(percentage);
+        //handleAlphaOnTitle(percentage);
         handleToolbarTitleVisibility(percentage);
     }
 
@@ -258,35 +249,18 @@ public class ArticleListActivity extends AppCompatActivity implements
         if (percentage >= PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
 
             if(!mIsTheTitleVisible) {
-                startAlphaAnimation(mTitle, ALPHA_ANIMATIONS_DURATION, View.VISIBLE);
+                startAlphaAnimation(mToolbar, ALPHA_ANIMATIONS_DURATION, View.VISIBLE);
                 mIsTheTitleVisible = true;
             }
 
         } else {
 
             if (mIsTheTitleVisible) {
-                startAlphaAnimation(mTitle, ALPHA_ANIMATIONS_DURATION, View.INVISIBLE);
+                startAlphaAnimation(mToolbar, ALPHA_ANIMATIONS_DURATION, View.INVISIBLE);
                 mIsTheTitleVisible = false;
             }
         }
     }
-
-    private void handleAlphaOnTitle(float percentage) {
-        if (percentage >= PERCENTAGE_TO_HIDE_TITLE_DETAILS) {
-            if(mIsTheTitleContainerVisible) {
-                startAlphaAnimation(mTitleContainer, ALPHA_ANIMATIONS_DURATION, View.INVISIBLE);
-                mIsTheTitleContainerVisible = false;
-            }
-
-        } else {
-
-            if (!mIsTheTitleContainerVisible) {
-                startAlphaAnimation(mTitleContainer, ALPHA_ANIMATIONS_DURATION, View.VISIBLE);
-                mIsTheTitleContainerVisible = true;
-            }
-        }
-    }
-
     public static void startAlphaAnimation (View v, long duration, int visibility) {
         AlphaAnimation alphaAnimation = (visibility == View.VISIBLE)
                 ? new AlphaAnimation(0f, 1f)
