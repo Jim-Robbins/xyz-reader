@@ -27,6 +27,7 @@
     <color name="primary_text">#000000</color>
     <color name="secondary_text">#80000000</color>
     <color name="toolbar_text">#ffffff</color>
+    <color name="toolbar_subtext">#60ffffff</color>
     <color name="body_text">#000000</color>
     <color name="window_background">#ededed</color>
     <color name="divider">#06000000</color>

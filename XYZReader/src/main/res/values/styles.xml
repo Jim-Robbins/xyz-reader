@@ -40,38 +40,37 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-        <!-- android:textColorPrimary is the color of the title text in the Toolbar  -->
-        <item name="android:textColorPrimary">@android:color/holo_blue_light</item>
-        <!-- actionMenuTextColor is the color of the text of action (menu) items  -->
-        <item name="actionMenuTextColor">@android:color/holo_green_light</item>
-    </style>
-
-    <!-- This configures the styles for the title within the Toolbar  -->
-    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textSize">21sp</item>
-        <item name="android:textStyle">italic</item>
-    </style>
-
-    <style name="ExpandedTitleTextAppearance" parent="@android:style/TextAppearance.Large">
-        <item name="android:textStyle">bold</item>
-    </style>
-
     <style name="article_list_title">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textColor">@color/toolbar_text</item>
 
     </style>
 
     <style name="article_list_subtitle">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:textColor">@color/toolbar_subtext</item>
+    </style>
+
+    <style name="article_title">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/toolbar_text</item>
+    </style>
+
+    <style name="article_subtitle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/toolbar_subtext</item>
+    </style>
+
+    <style name="toolbar_title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/toolbar_text</item>
     </style>
 
     <style name="NestedScrollView">
-        <item name="android:scrollbarFadeDuration">0</item>
-        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarFadeDuration">3</item>
+        <item name="android:fadeScrollbars">true</item>
         <item name="android:scrollbars">vertical</item>
         <item name="android:fillViewport">true</item>
         <item name="android:orientation">vertical</item>

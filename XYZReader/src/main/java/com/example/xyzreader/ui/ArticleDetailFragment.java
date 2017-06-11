@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
@@ -37,6 +38,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import static com.example.xyzreader.R.id.toolbar;
+
 /**
  * A fragment representing a single Article detail screen. This fragment is
  * either contained in a {@link ArticleListActivity} in two-pane mode (on
@@ -47,7 +50,7 @@ public class ArticleDetailFragment extends Fragment implements
     private static final String TAG = "ArticleDetailFragment";
 
     private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR  = 0.8f;
-    private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS     = 0.75f;
+    private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS     = 0.8f;
     private static final int ALPHA_ANIMATIONS_DURATION              = 300;
     private boolean mIsTheTitleVisible          = false;
     private boolean mIsTheTitleContainerVisible = true;
@@ -103,6 +106,14 @@ public class ArticleDetailFragment extends Fragment implements
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("cek", "home selected");
+                ((AppCompatActivity) getActivity()).onSupportNavigateUp();
+            }
+        });
     }
 
     public ArticleDetailActivity getActivityCast() {
@@ -124,8 +135,6 @@ public class ArticleDetailFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         mRootView = (CoordinatorLayout) inflater.inflate(R.layout.fragment_article_detail, container, false);
-
-        //mScrollView = (NestedScrollView) mRootView.findViewById(R.id.scrollview);
 
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
 
@@ -168,7 +177,7 @@ public class ArticleDetailFragment extends Fragment implements
         bylineView.setMovementMethod(new LinkMovementMethod());
         TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
 
-        mToolbar        = (Toolbar) mRootView.findViewById(R.id.toolbar);
+        mToolbar        = (Toolbar) mRootView.findViewById(toolbar);
         mTitle          = (TextView) mRootView.findViewById(R.id.toolbar_title);
         mTitleContainer = (LinearLayout) mRootView.findViewById(R.id.meta_bar);
         mAppBarLayout   = (AppBarLayout) mRootView.findViewById(R.id.appbar);
@@ -212,7 +221,7 @@ public class ArticleDetailFragment extends Fragment implements
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());
                                 mRootView.findViewById(R.id.meta_bar)
                                         .setBackgroundColor(mMutedColor);
-                                mRootView.findViewById(R.id.toolbar)
+                                mRootView.findViewById(toolbar)
                                         .setBackgroundColor(mMutedColor);
                             }
                         }
@@ -258,6 +267,18 @@ public class ArticleDetailFragment extends Fragment implements
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
         mCursor = null;
         bindViews();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        LayoutInflater inflater = LayoutInflater.from(getActivity());
+        populateViewForOrientation(inflater, (ViewGroup) getView());
+    }
+
+    private void populateViewForOrientation(LayoutInflater inflater, ViewGroup viewGroup) {
+        viewGroup.removeAllViewsInLayout();
+        View subview = inflater.inflate(R.layout.fragment_article_detail, viewGroup);
     }
 
     @Override

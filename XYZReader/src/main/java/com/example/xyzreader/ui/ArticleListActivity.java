@@ -139,11 +139,11 @@ public class ArticleListActivity extends AppCompatActivity implements
                 new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(sglm);
 
-        RecyclerView.ItemDecoration dividerItemDecoration = new DividerItemDecoration(
-                this,
-                ContextCompat.getDrawable(this, R.drawable.padded_divider),
-                DividerItemDecoration.VERTICAL_LIST);
-        mRecyclerView.addItemDecoration(dividerItemDecoration);
+//        RecyclerView.ItemDecoration dividerItemDecoration = new DividerItemDecoration(
+//                this,
+//                ContextCompat.getDrawable(this, R.drawable.padded_divider),
+//                DividerItemDecoration.VERTICAL_LIST);
+//        mRecyclerView.addItemDecoration(dividerItemDecoration);
 
     }
 
@@ -210,8 +210,7 @@ public class ArticleListActivity extends AppCompatActivity implements
                         + "\n" + " by "
                         + mCursor.getString(ArticleLoader.Query.AUTHOR));
             }
-            holder.subtitleView.setText(mCursor.getString(ArticleLoader.Query.BODY));
-            Log.d(TAG, mCursor.getString(ArticleLoader.Query.THUMB_URL));
+
             holder.thumbnailView.setImageUrl(
                     mCursor.getString(ArticleLoader.Query.THUMB_URL),
                     ImageLoaderHelper.getInstance(ArticleListActivity.this).getImageLoader());

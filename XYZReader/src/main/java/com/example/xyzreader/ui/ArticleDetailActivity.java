@@ -12,6 +12,7 @@ import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,7 +31,6 @@ public class ArticleDetailActivity extends AppCompatActivity
 
     private Cursor mCursor;
     private long mStartId;
-
     private long mSelectedItemId;
 
     private ViewPager mPager;
@@ -70,8 +70,6 @@ public class ArticleDetailActivity extends AppCompatActivity
             }
         });
 
-        initToolbar();
-
         if (savedInstanceState == null) {
             if (getIntent() != null && getIntent().getData() != null) {
                 mStartId = ItemsContract.Items.getItemId(getIntent().getData());
@@ -80,12 +78,15 @@ public class ArticleDetailActivity extends AppCompatActivity
         }
     }
 
-    private void initToolbar() {
-        setSupportActionBar((Toolbar) findViewById(toolbar));
-        // add back arrow to toolbar
-        if (getSupportActionBar() != null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+    private static final String TAG = "ArticleDetailActivity";
+    @Override
+    public void onBackPressed(){
+        Log.d(TAG, "onBackPressed: ");
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1){
+            finish();
+        }
+        else {
+            super.onBackPressed();
         }
     }
 
