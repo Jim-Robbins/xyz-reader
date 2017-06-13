@@ -1,0 +1,48 @@
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_small"
+    android:layout_marginRight="@dimen/margin_small"
+    android:layout_marginTop="@dimen/margin_tiny"
+    android:layout_marginBottom="@dimen/margin_small"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?selectableItemBackground">
+
+    <!--suppress AndroidLintContentDescription -->
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_item_image_grid_height"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:paddingStart="@dimen/margin_normal"
+        android:paddingRight="@dimen/margin_normal"
+        android:paddingTop="@dimen/margin_medium"
+        android:paddingBottom="@dimen/margin_medium"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_item_three_line_text_height"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:background="@color/theme_primary_dark_opaque">
+
+        <TextView
+        android:id="@+id/article_title"
+        style="@style/article_list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+        <TextView
+        android:id="@+id/article_subtitle"
+        style="@style/article_list_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</FrameLayout>

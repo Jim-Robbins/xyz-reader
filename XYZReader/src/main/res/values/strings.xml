@@ -9,4 +9,7 @@
 
     <string name="up">Up</string>
 
+    <string name="list_article_subtitle">%1$s \nby %2$s</string>
+    <string name="article_subtitle">%1$s by %2$s</string>
+
 </resources>

@@ -20,6 +20,7 @@
 
     <color name="theme_primary">#009688</color>
     <color name="theme_primary_dark">#00675b</color>
+    <color name="theme_primary_dark_opaque">#aa00675b</color>
     <color name="theme_primary_light">#52c7b8</color>
     <color name="theme_accent">#f4511e</color>
     <color name="theme_accent_dark">#b91400</color>
@@ -27,7 +28,7 @@
     <color name="primary_text">#000000</color>
     <color name="secondary_text">#80000000</color>
     <color name="toolbar_text">#ffffff</color>
-    <color name="toolbar_subtext">#60ffffff</color>
+    <color name="toolbar_subtext">#ccffffff</color>
     <color name="body_text">#000000</color>
     <color name="window_background">#ededed</color>
     <color name="divider">#06000000</color>

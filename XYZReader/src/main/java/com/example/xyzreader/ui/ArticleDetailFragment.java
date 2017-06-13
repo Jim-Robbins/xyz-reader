@@ -7,6 +7,7 @@ import android.content.Loader;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -39,6 +40,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import static com.example.xyzreader.R.id.toolbar;
+import static com.example.xyzreader.Utils.getFormattedDate;
 
 /**
  * A fragment representing a single Article detail screen. This fragment is
@@ -68,12 +70,6 @@ public class ArticleDetailFragment extends Fragment implements
     private TextView mTitle;
     private AppBarLayout mAppBarLayout;
     private Toolbar mToolbar;
-
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
-    // Use default locale format
-    private SimpleDateFormat outputFormat = new SimpleDateFormat();
-    // Most time functions can only handle 1902 - 2037
-    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2,1,1);
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -156,17 +152,6 @@ public class ArticleDetailFragment extends Fragment implements
         return mRootView;
     }
 
-    private Date parsePublishedDate() {
-        try {
-            String date = mCursor.getString(ArticleLoader.Query.PUBLISHED_DATE);
-            return dateFormat.parse(date);
-        } catch (ParseException ex) {
-            Log.e(TAG, ex.getMessage());
-            Log.i(TAG, "passing today's date");
-            return new Date();
-        }
-    }
-
     private void bindViews() {
         if (mRootView == null) {
             return;
@@ -189,40 +174,22 @@ public class ArticleDetailFragment extends Fragment implements
         if (mCursor != null) {
             mRootView.setVisibility(View.VISIBLE);
             titleView.setText(mCursor.getString(ArticleLoader.Query.TITLE));
-            Date publishedDate = parsePublishedDate();
-            if (!publishedDate.before(START_OF_EPOCH.getTime())) {
-                bylineView.setText(Html.fromHtml(
-                        DateUtils.getRelativeTimeSpanString(
-                                publishedDate.getTime(),
-                                System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
-                                DateUtils.FORMAT_ABBREV_ALL).toString()
-                                + " by <font color='#ffffff'>"
-                                + mCursor.getString(ArticleLoader.Query.AUTHOR)
-                                + "</font>"));
 
-            } else {
-                // If date is before 1902, just show the string
-                bylineView.setText(Html.fromHtml(
-                        outputFormat.format(publishedDate) + " by <font color='#ffffff'>"
-                        + mCursor.getString(ArticleLoader.Query.AUTHOR)
-                                + "</font>"));
+            String subtitleText = getString(
+                    R.string.article_subtitle,
+                    getFormattedDate(mCursor.getString(ArticleLoader.Query.PUBLISHED_DATE)),
+                    mCursor.getString(ArticleLoader.Query.AUTHOR));
+            bylineView.setText(subtitleText);
 
-            }
             mTitle.setText(mCursor.getString(ArticleLoader.Query.TITLE));
-            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\\r\\n\\r\\n)", "<br />")));
+            bodyView.setText(Html.fromHtml("<p>"+ mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\\r\\n\\r\\n)", "</p><p>")));
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
                         @Override
                         public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
                             Bitmap bitmap = imageContainer.getBitmap();
                             if (bitmap != null) {
-                                Palette p = Palette.generate(bitmap, 12);
-                                mMutedColor = p.getDarkMutedColor(0xFF333333);
-                                mPhotoView.setImageBitmap(imageContainer.getBitmap());
-                                mRootView.findViewById(R.id.meta_bar)
-                                        .setBackgroundColor(mMutedColor);
-                                mRootView.findViewById(toolbar)
-                                        .setBackgroundColor(mMutedColor);
+                                getMutedColor(bitmap);
                             }
                         }
 
@@ -237,6 +204,32 @@ public class ArticleDetailFragment extends Fragment implements
             bylineView.setText("N/A" );
             bodyView.setText("N/A");
         }
+    }
+
+    private void getMutedColor(Bitmap bitmap) {
+        Palette p = Palette.generate(bitmap, 12);
+        mMutedColor = p.getMutedColor(0xFF333333);
+        mMutedColor = getColorWithAplha(mMutedColor, 0.8f);
+        mPhotoView.setImageBitmap(bitmap);
+        mRootView.findViewById(R.id.meta_bar)
+                .setBackgroundColor(mMutedColor);
+        mRootView.findViewById(toolbar)
+                .setBackgroundColor(mMutedColor);
+    }
+    /**
+     * @param color opaque RGB integer color for ex: -11517920
+     * @param ratio ratio of transparency for ex: 0.5f
+     * @return transparent RGB integer color
+     */
+    private int getColorWithAplha(int color, float ratio)
+    {
+        int transColor = 0;
+        int alpha = Math.round(Color.alpha(color) * ratio);
+        int r = Color.red(color);
+        int g = Color.green(color);
+        int b = Color.blue(color);
+        transColor = Color.argb(alpha, r, g, b);
+        return transColor ;
     }
 
     @Override

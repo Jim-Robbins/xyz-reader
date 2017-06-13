@@ -8,6 +8,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
+/**
+* Adpated from
+* https://www.sitepoint.com/animating-android-floating-action-button/
+*/
 public class FabFloatOnScroll extends FloatingActionButton.Behavior {
 
     public FabFloatOnScroll(Context context, AttributeSet attrs) {

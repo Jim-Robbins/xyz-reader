@@ -1,22 +1,35 @@
 <resources>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_tiny">2dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+
+    <!-- toolbar -->
+    <dimen name="toolbar_image_height">150dp</dimen>
+    <dimen name="toolbar_height">75dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <item name="toolbar_parallax_multiplier" format="float" type="fraction">0.9</item>
+
     <!-- list -->
-    <dimen name="list_side_margin">@dimen/margin_normal</dimen>
+    <dimen name="list_top_margin">@dimen/toolbar_height</dimen>
+    <dimen name="list_side_margin">0dp</dimen>
 
     <dimen name="list_bottom_margin">28dp</dimen>
-    <dimen name="list_toolbar_side_margin">0dp</dimen>
     <dimen name="list_item_two_line_text_height">68dp</dimen>
     <dimen name="list_item_three_line_text_height">72dp</dimen>
-    <dimen name="list_item_image_width">40dp</dimen>
-    <dimen name="list_item_image_height">55dp</dimen>
+    <dimen name="list_item_image_row_width">40dp</dimen>
+    <dimen name="list_item_image_row_height">40dp</dimen>
+    <dimen name="list_item_image_grid_height">200dp</dimen>
     <dimen name="list_item_content_left_margin">72dp</dimen>
-    <integer name="list_column_count">3</integer>
+    <integer name="list_column_count">2</integer>
 
     <!-- detail -->
+    <dimen name="detail_linear_layout_elevation">2dp</dimen>
     <bool name="detail_is_card">false</bool>
-    <dimen name="detail_photo_height">300dp</dimen>
+    <dimen name="detail_photo_height">250dp</dimen>
+    <dimen name="detail_inner_horiz_margin">24dp</dimen>
     <dimen name="detail_card_top_margin">@dimen/detail_photo_height</dimen>
-    <dimen name="detail_inner_horiz_margin">16dp</dimen>
-    <dimen name="detail_card_max_width">300dp</dimen>
+    <dimen name="detail_card_margin">0dp</dimen>
     <dimen name="detail_metabar_vert_padding">16dp</dimen>
     <dimen name="detail_metabar_title_bottom_padding">4dp</dimen>
     <dimen name="detail_body_top_margin">16dp</dimen>
@@ -26,5 +39,11 @@
     <dimen name="detail_body_text_size">22sp</dimen>
     <item name="detail_body_line_spacing_multiplier" format="float" type="fraction">1.25</item>
     <item name="detail_title_line_spacing_multiplier" format="float" type="fraction">0.9</item>
+
+    <!-- fab -->
+    <dimen name="fab_elevation">4dp</dimen>
+    <dimen name="fab_press_translation_z">6dp</dimen>
+    <dimen name="fab_margin">24dp</dimen>
+    <dimen name="fab_size">56dp</dimen>
 
 </resources>

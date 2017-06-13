@@ -1,7 +1,12 @@
 <resources>
-    <!-- detail -->
-    <bool name="detail_is_card">true</bool>
+    <!-- toolbar -->
+    <dimen name="toolbar_image_height">200dp</dimen>
 
-    <dimen name="detail_photo_height">500dp</dimen>
-    <dimen name="detail_card_top_margin">256dp</dimen>
+    <!-- list -->
+    <dimen name="list_item_image_grid_height">400dp</dimen>
+    <integer name="list_column_count">4</integer>
+
+    <!-- detail -->
+    <dimen name="detail_photo_height">400dp</dimen>
+    <dimen name="detail_card_margin">225dp</dimen>
 </resources>
