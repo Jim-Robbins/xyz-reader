@@ -7,7 +7,7 @@
     <dimen name="list_item_image_row_width">60dp</dimen>
     <dimen name="list_item_image_row_height">60dp</dimen>
     <dimen name="list_item_image_grid_height">325dp</dimen>
-    <integer name="list_column_count">3</integer>
+    <integer name="list_column_count">2</integer>
 
     <!-- detail -->
     <dimen name="detail_photo_height">400dp</dimen>

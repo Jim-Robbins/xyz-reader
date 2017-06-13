@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  https://stackoverflow.com/questions/35815041/collapsingtoolbarlayout-without-shadow-in-expanded-state/39247130#39247130
+  -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="PrivateResource">
+    <item>
+        <objectAnimator
+            android:propertyName="elevation"
+            android:valueTo="@dimen/toolbar_elevation"
+            android:valueType="floatType" />
+    </item>
+</selector>

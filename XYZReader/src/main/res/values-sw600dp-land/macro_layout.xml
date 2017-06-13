@@ -4,7 +4,7 @@
 
     <!-- list -->
     <dimen name="list_item_image_grid_height">400dp</dimen>
-    <integer name="list_column_count">4</integer>
+    <integer name="list_column_count">3</integer>
 
     <!-- detail -->
     <dimen name="detail_photo_height">400dp</dimen>
